@@ -6,6 +6,7 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 interface ISimpleCard {
   id: string
   name: string,
@@ -45,12 +46,12 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="flex flex-col justify-start items-center">
+    <div className="flex flex-col justify-start items-center bg-zinc-300">
       <Header />
       {
         loading ? (
           <>
-            <div className="animate-pulse flex flex-column flex-wrap justify-center items-center">
+            <div className="animate-pulse flex flex-column flex-wrap w-full max-w-screen-2xl justify-center items-center bg-white rounded-b-3xl">
               <div className="p-2 m-3 flex flex-col justify-center items-center">
                 <div className="bg-slate-200 h-4 w-32"></div>
                 <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
@@ -95,7 +96,7 @@ export default function Home() {
           </>
         ) : (
           <>
-            <div className="flex flex-column flex-wrap justify-center items-center">
+            <div className="flex flex-column flex-wrap w-full max-w-screen-2xl justify-center items-center bg-white rounded-b-3xl">
             {
               cards.map(card => {
                 return(
@@ -120,6 +121,7 @@ export default function Home() {
           </>
         )
       }
+      <Footer />
     </div>
   )
 }
