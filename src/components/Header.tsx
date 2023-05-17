@@ -4,14 +4,17 @@ import Image from "next/image"
 import SearchIcon from "../assets/search.png"
 import Logo from "../assets/logo.png"
 import { useState } from "react"
+import Link from "next/link";
 
 
 export default function Header() {
     const [search, setSearch] = useState('')
     return (
-        <header className="flex justify-between items-center h-20 w-full bg-red-600">
+        <header className="flex justify-between items-center h-20 w-full bg-red-600 shadow-xl rounded-b-3xl">
             <div className="ml-32">
-                <Image src={Logo} alt="Logo" width={40} height={40}/>
+                <Link href={"/"}>
+                    <Image src={Logo} alt="Logo" width={40} height={40}/>
+                </Link>
             </div>
             <div className="flex flex-row justify-between items-center mr-32 h-8 w rounded bg-white">
                 <input
