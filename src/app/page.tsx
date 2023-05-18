@@ -46,81 +46,10 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="flex flex-col justify-start items-center bg-zinc-300">
+    <div className="flex flex-col justify-start items-center h-screen bg-zinc-300">
       <Header />
-      {
-        loading ? (
-          <>
-            <div className="animate-pulse flex flex-column flex-wrap w-full max-w-screen-2xl justify-center items-center bg-white rounded-b-3xl">
-              <div className="p-2 m-3 flex flex-col justify-center items-center">
-                <div className="bg-slate-200 h-4 w-32"></div>
-                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-              </div>
-              <div className="p-2 m-3 flex flex-col justify-center items-center">
-                <div className="bg-slate-200 h-4 w-32"></div>
-                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-              </div>
-              <div className="p-2 m-3 flex flex-col justify-center items-center">
-                <div className="bg-slate-200 h-4 w-32"></div>
-                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-              </div>
-              <div className="p-2 m-3 flex flex-col justify-center items-center">
-                <div className="bg-slate-200 h-4 w-32"></div>
-                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-              </div>
-              <div className="p-2 m-3 flex flex-col justify-center items-center">
-                <div className="bg-slate-200 h-4 w-32"></div>
-                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-              </div>
-              <div className="p-2 m-3 flex flex-col justify-center items-center">
-                <div className="bg-slate-200 h-4 w-32"></div>
-                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-              </div>
-              <div className="p-2 m-3 flex flex-col justify-center items-center">
-                <div className="bg-slate-200 h-4 w-32"></div>
-                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-              </div>
-              <div className="p-2 m-3 flex flex-col justify-center items-center">
-                <div className="bg-slate-200 h-4 w-32"></div>
-                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-              </div>
-              <div className="p-2 m-3 flex flex-col justify-center items-center">
-                <div className="bg-slate-200 h-4 w-32"></div>
-                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-              </div>
-              <div className="p-2 m-3 flex flex-col justify-center items-center">
-                <div className="bg-slate-200 h-4 w-32"></div>
-                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-              </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="flex flex-column flex-wrap w-full max-w-screen-2xl justify-center items-center bg-white rounded-b-3xl">
-            {
-              cards.map(card => {
-                return(
-                  <>
-                    <div className="p-2 m-3">
-                      <Link 
-                        href={{
-                          pathname: '/card',
-                          query: { id: card.id },
-                        }}
-                        className="flex flex-col justify-center items-center rounded-2xl hover:shadow-2xl"
-                      >
-                        <h2>{card.name} ({card.id})</h2>
-                        <Image src={card.images.small} alt={`card-image-${card.id}`} width={300} height={1200}/>
-                      </Link>
-                    </div>
-                  </>
-                )
-              })
-            }
-          </div>
-          </>
-        )
-      }
+      <div className="flex flex-column flex-wrap w-full max-w-screen-2xl h-5/6 justify-center items-center bg-white rounded-b-3xl">
+      </div>
       <Footer />
     </div>
   )
