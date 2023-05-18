@@ -17,7 +17,7 @@ interface ISimpleSet {
   }
 }
 
-export default function Home() {
+export default function Sets() {
   const [page, setPage] = useState(1);
   const [sets, setSets] = useState<Array<ISimpleSet[]>>([])
   const [loading, setLoading] = useState(true)
@@ -37,7 +37,7 @@ export default function Home() {
     return result;
 }
 
-  const getCards = async ()  => {
+  const getSets = async ()  => {
     setLoading(true)
 
     await axios.get(`${process.env.POKE_TCG_API_URL}/sets`, {
@@ -60,7 +60,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    getCards()
+    getSets()
   }, [])
 
   return (
