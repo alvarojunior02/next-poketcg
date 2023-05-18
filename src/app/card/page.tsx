@@ -10,7 +10,6 @@ import Link from "next/link";
 import Footer from "@/components/Footer";
 
 export default function Card(props: any) {
-  const [page, setPage] = useState(1);
   const [card, setCard] = useState<ICard>()
   const [loading, setLoading] = useState(true)
 
@@ -159,7 +158,7 @@ export default function Card(props: any) {
                                             <>
                                                 <div className="ml-4 mt-2">
                                                     <p className="text-xl">{ability.name}</p>
-                                                    <p>{ability.text}</p>
+                                                    <p className="mt-4 mb-4">{ability.text}</p>
                                                 </div>  
                                             </>
                                         )
@@ -182,7 +181,7 @@ export default function Card(props: any) {
                                                         <p className="text-xl">{attack.name}</p>
                                                         <p className="text-lg">{attack.damage}</p>
                                                     </div>
-                                                    <p>{attack.text}</p>
+                                                    <p className="mt-4 mb-4">{attack.text}</p>
                                                 </div>  
                                             </>
                                         )
@@ -201,7 +200,7 @@ export default function Card(props: any) {
                                         return (
                                             <>
                                                 <div className="ml-4 mt-2">
-                                                    <p>{rule}</p>
+                                                    <p className="mb-4">{rule}</p>
                                                 </div>  
                                             </>
                                         )
