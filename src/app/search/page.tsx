@@ -7,15 +7,16 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
 interface ISimpleCard {
   id: string
   name: string,
   images: {
-    small: string,
+    large: string,
   }
 }
 
-export default function Set(props: any) {
+export default function Search(props: any) {
     const [cards, setCards] = useState<ISimpleCard[]>([])
     const [loading, setLoading] = useState(true)
 
@@ -28,7 +29,7 @@ export default function Set(props: any) {
                 pageSize: 250,
                 orderBy: "number",
                 select: "id,name,images",
-                q: `set.id:${props.searchParams.id}`,
+                q: `name:${props.searchParams.q}`,
             },
             headers: {
                 'X-api-key': process.env.POKE_TCG_API_KEY,
@@ -41,7 +42,7 @@ export default function Set(props: any) {
                         pageSize: 250,
                         orderBy: "number",
                         select: "id,name,images",
-                        q: `set.id:${props.searchParams.id}`,
+                        q: `name:${props.searchParams.q}`,
                     },
                     headers: {
                         'X-api-key': process.env.POKE_TCG_API_KEY,
@@ -102,14 +103,6 @@ export default function Set(props: any) {
                             <div className="bg-slate-200 h-4 w-32"></div>
                             <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
                         </div>
-                        <div className="p-2 m-3 flex flex-col justify-center items-center">
-                            <div className="bg-slate-200 h-4 w-32"></div>
-                            <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-                        </div>
-                        <div className="p-2 m-3 flex flex-col justify-center items-center">
-                            <div className="bg-slate-200 h-4 w-32"></div>
-                            <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-                        </div>
                     </div>
                 </>
                 ) : (
@@ -121,13 +114,13 @@ export default function Set(props: any) {
                                 <div className="p-2 m-3" key={card.id}>
                                     <Link 
                                         href={{
-                                        pathname: '/card',
-                                        query: { id: card.id },
+                                            pathname: '/card',
+                                            query: { id: card.id },
                                         }}
                                         className="flex flex-col justify-center items-center rounded-2xl hover:shadow-2xl"
                                     >
                                         <h2>{card.name}</h2>
-                                        <Image src={card.images.small} alt={`card-image-${card.id}`} width={300} height={1200}/>
+                                        <Image src={card.images.large} alt={`card-image-${card.id}`} width={300} height={1200}/>
                                     </Link>
                                 </div>
                             )
