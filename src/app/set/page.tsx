@@ -7,6 +7,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+
+import { useSearchParams } from "next/navigation";
+
 interface ISimpleCard {
   id: string
   name: string,
@@ -15,9 +18,11 @@ interface ISimpleCard {
   }
 }
 
-export default function Set(props: any) {
+export default function Set() {
     const [cards, setCards] = useState<ISimpleCard[]>([])
     const [loading, setLoading] = useState(true)
+
+    const searchParams = useSearchParams()
 
     const getCards = async ()  => {
         setLoading(true)
@@ -28,7 +33,7 @@ export default function Set(props: any) {
                 pageSize: 250,
                 orderBy: "number",
                 select: "id,name,images",
-                q: `set.id:${props.searchParams.id}`,
+                q: `set.id:${searchParams.get('id')!.toString()}`,
             },
             headers: {
                 'X-api-key': process.env.POKE_TCG_API_KEY,
@@ -41,7 +46,7 @@ export default function Set(props: any) {
                         pageSize: 250,
                         orderBy: "number",
                         select: "id,name,images",
-                        q: `set.id:${props.searchParams.id}`,
+                        q: `set.id:${searchParams.get('id')!.toString()}`,
                     },
                     headers: {
                         'X-api-key': process.env.POKE_TCG_API_KEY,
