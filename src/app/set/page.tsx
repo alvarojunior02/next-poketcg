@@ -126,7 +126,7 @@ export default function Set(props: any) {
                                         }}
                                         className="flex flex-col justify-center items-center rounded-2xl hover:shadow-2xl"
                                     >
-                                        <h2>{card.name} ({card.id})</h2>
+                                        <h2>{card.name}</h2>
                                         <Image src={card.images.small} alt={`card-image-${card.id}`} width={300} height={1200}/>
                                     </Link>
                                 </div>
