@@ -7,8 +7,9 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+import SearchIcon from "../assets/search.png";
+
 export default function Home() {
-  const [page, setPage] = useState(1);
   const miraidon = {
     id: "sv1-244",
     name: "Miraidon ex",
@@ -23,9 +24,8 @@ export default function Home() {
       small: "https://images.pokemontcg.io/sv1/247.png"
     }
   }
-    
-  const [loading, setLoading] = useState(true)
 
+  const [search, setSearch] = useState("")
 
   return (
     <div className="flex flex-col justify-start items-center h-screen bg-zinc-300">
@@ -44,8 +44,18 @@ export default function Home() {
 
         <div className="flex flex-col h-full justify-center items-center leading-tight">
           <h1 className="font-bold text-2xl">Next - Poke TCG</h1>
-          <p className="text-xl">Search a card: </p>
-          <input type="text" className="border-solid border-black border-2 px-2 py-1 rounded-lg w-[400px]" />
+          <p className="text-xl mt-1">Search a card by name: </p>
+          <div className="flex flex-row justify-between items-center border-2 border-solid border-black rounded-lg px-2 py-1 w-[400px]">
+            <input type="text" className="w-[380px] focus:outline-none" maxLength={40} value={search} onChange={(e) => (setSearch(e.target.value))} />
+            <Link 
+              href={{
+                pathname: '/search',
+                query: { q: search},
+              }}
+            >
+              <Image src={SearchIcon} alt="Search" width={30} height={30} />
+            </Link>
+          </div>
         </div>
           
         <div>
