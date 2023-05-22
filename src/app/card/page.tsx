@@ -9,14 +9,18 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 
-export default function Card(props: any) {
+import { useSearchParams } from "next/navigation";
+
+export default function Card() {
   const [card, setCard] = useState<ICard>()
   const [loading, setLoading] = useState(true)
 
-  const getCard = async (id: string)  => {
+  const searchParams = useSearchParams()
+
+  const getCard = async ()  => {
     setLoading(true)
 
-    await axios.get(`${process.env.POKE_TCG_API_URL}/cards/${id}`, {
+    await axios.get(`${process.env.POKE_TCG_API_URL}/cards/${searchParams.get('id')!.toString()}`, {
         headers: {
             'X-api-key': process.env.POKE_TCG_API_KEY,
         }
@@ -29,7 +33,7 @@ export default function Card(props: any) {
   }
 
   useEffect(() => {
-    getCard(props.searchParams.id)
+    getCard()
   }, [])
 
   return (

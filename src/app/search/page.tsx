@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
@@ -8,6 +9,8 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+import { useSearchParams } from 'next/navigation'
+
 interface ISimpleCard {
   id: string
   name: string,
@@ -16,9 +19,11 @@ interface ISimpleCard {
   }
 }
 
-export default function Search(props: any) {
+export default function Search() {
     const [cards, setCards] = useState<ISimpleCard[]>([])
     const [loading, setLoading] = useState(true)
+
+    const searchParams = useSearchParams()
 
     const getCards = async ()  => {
         setLoading(true)
@@ -29,7 +34,7 @@ export default function Search(props: any) {
                 pageSize: 250,
                 orderBy: "number",
                 select: "id,name,images",
-                q: `name:${props.searchParams.q}`,
+                q: `name:${searchParams.get('q')}`,
             },
             headers: {
                 'X-api-key': process.env.POKE_TCG_API_KEY,
@@ -42,7 +47,7 @@ export default function Search(props: any) {
                         pageSize: 250,
                         orderBy: "number",
                         select: "id,name,images",
-                        q: `name:${props.searchParams.q}`,
+                        q: `name:${searchParams.get('q')}`,
                     },
                     headers: {
                         'X-api-key': process.env.POKE_TCG_API_KEY,
