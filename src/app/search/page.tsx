@@ -12,11 +12,11 @@ import Footer from "@/components/Footer";
 import { useSearchParams } from 'next/navigation'
 
 interface ISimpleCard {
-  id: string
-  name: string,
-  images: {
-    large: string,
-  }
+    id: string
+    name: string,
+    images: {
+        large: string,
+    }
 }
 
 export default function Search() {
@@ -25,7 +25,7 @@ export default function Search() {
 
     const searchParams = useSearchParams()
 
-    const getCards = async ()  => {
+    const getCards = async () => {
         setLoading(true)
 
         await axios.get(`${process.env.POKE_TCG_API_URL}/cards`, {
@@ -74,65 +74,65 @@ export default function Search() {
             <Header />
             {
                 loading ? (
-                <>
-                    <div className="animate-pulse flex flex-column flex-wrap w-full max-w-screen-2xl justify-center items-center bg-white rounded-b-3xl">
-                        <div className="p-2 m-3 flex flex-col justify-center items-center">
-                            <div className="bg-slate-200 h-4 w-32"></div>
-                            <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
+                    <>
+                        <div className="animate-pulse flex flex-column flex-wrap w-full max-w-screen-2xl justify-center items-center bg-white rounded-b-3xl">
+                            <div className="p-2 m-3 flex flex-col justify-center items-center">
+                                <div className="bg-slate-200 h-4 w-32"></div>
+                                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
+                            </div>
+                            <div className="p-2 m-3 flex flex-col justify-center items-center">
+                                <div className="bg-slate-200 h-4 w-32"></div>
+                                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
+                            </div>
+                            <div className="p-2 m-3 flex flex-col justify-center items-center">
+                                <div className="bg-slate-200 h-4 w-32"></div>
+                                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
+                            </div>
+                            <div className="p-2 m-3 flex flex-col justify-center items-center">
+                                <div className="bg-slate-200 h-4 w-32"></div>
+                                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
+                            </div>
+                            <div className="p-2 m-3 flex flex-col justify-center items-center">
+                                <div className="bg-slate-200 h-4 w-32"></div>
+                                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
+                            </div>
+                            <div className="p-2 m-3 flex flex-col justify-center items-center">
+                                <div className="bg-slate-200 h-4 w-32"></div>
+                                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
+                            </div>
+                            <div className="p-2 m-3 flex flex-col justify-center items-center">
+                                <div className="bg-slate-200 h-4 w-32"></div>
+                                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
+                            </div>
+                            <div className="p-2 m-3 flex flex-col justify-center items-center">
+                                <div className="bg-slate-200 h-4 w-32"></div>
+                                <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
+                            </div>
                         </div>
-                        <div className="p-2 m-3 flex flex-col justify-center items-center">
-                            <div className="bg-slate-200 h-4 w-32"></div>
-                            <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-                        </div>
-                        <div className="p-2 m-3 flex flex-col justify-center items-center">
-                            <div className="bg-slate-200 h-4 w-32"></div>
-                            <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-                        </div>
-                        <div className="p-2 m-3 flex flex-col justify-center items-center">
-                            <div className="bg-slate-200 h-4 w-32"></div>
-                            <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-                        </div>
-                        <div className="p-2 m-3 flex flex-col justify-center items-center">
-                            <div className="bg-slate-200 h-4 w-32"></div>
-                            <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-                        </div>
-                        <div className="p-2 m-3 flex flex-col justify-center items-center">
-                            <div className="bg-slate-200 h-4 w-32"></div>
-                            <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-                        </div>
-                        <div className="p-2 m-3 flex flex-col justify-center items-center">
-                            <div className="bg-slate-200 h-4 w-32"></div>
-                            <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-                        </div>
-                        <div className="p-2 m-3 flex flex-col justify-center items-center">
-                            <div className="bg-slate-200 h-4 w-32"></div>
-                            <div className="rounded-2xl bg-slate-200 h-96 w-72 mt-2"></div>
-                        </div>
-                    </div>
-                </>
+                    </>
                 ) : (
-                <>
-                    <div className="flex flex-column flex-wrap w-full max-w-screen-2xl justify-center items-center bg-white rounded-b-3xl">
-                    {
-                        cards.map(card => {
-                            return(
-                                <div className="p-2 m-3" key={card.id}>
-                                    <Link 
-                                        href={{
-                                            pathname: '/card',
-                                            query: { id: card.id },
-                                        }}
-                                        className="flex flex-col justify-center items-center rounded-2xl hover:shadow-2xl"
-                                    >
-                                        <h2>{card.name}</h2>
-                                        <Image src={card.images.large} alt={`card-image-${card.id}`} width={300} height={1200}/>
-                                    </Link>
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-                </>
+                    <>
+                        <div className="flex flex-column flex-wrap w-full max-w-screen-2xl justify-center items-center bg-white rounded-b-3xl">
+                            {
+                                cards.map(card => {
+                                    return (
+                                        <div className="p-2 m-3" key={card.id}>
+                                            <Link
+                                                href={{
+                                                    pathname: '/card',
+                                                    query: { id: card.id },
+                                                }}
+                                                className="flex flex-col justify-center items-center rounded-2xl hover:shadow-2xl"
+                                            >
+                                                <h2>{card.name}</h2>
+                                                <Image src={card.images.large} alt={`card-image-${card.id}`} width={300} height={1200} />
+                                            </Link>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </>
                 )
             }
             <Footer />
